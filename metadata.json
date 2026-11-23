@@ -1,0 +1,5 @@
+{
+  "name": "Episodic Reader",
+  "description": "Offline-first episodic classic and personal book reader that slices long books into calm 5-7 minute episodes with zero-spoiler character lookup and break re-entry recaps.",
+  "requestFramePermissions": []
+}

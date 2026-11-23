@@ -1,0 +1,855 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "c7d085f8502aa28fe5ef004b2c26c843",
+    "entities": [
+      {
+        "tableName": "books",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`book_id` TEXT NOT NULL, `title` TEXT NOT NULL, `author` TEXT NOT NULL, `source_type` TEXT NOT NULL, `source_hash_sha256` TEXT NOT NULL, `local_file_path` TEXT, `import_status` TEXT NOT NULL, `is_hidden` INTEGER NOT NULL, `current_episode_id` TEXT, `current_paragraph_seq` INTEGER NOT NULL, `max_read_seq` INTEGER NOT NULL, `completed_episodes_count` INTEGER NOT NULL, `completed_at_utc` INTEGER, `last_read_at_utc` INTEGER, `imported_at_utc` INTEGER NOT NULL, `pdf_notice_dismissed` INTEGER NOT NULL, `attribution_note` TEXT, PRIMARY KEY(`book_id`))",
+        "fields": [
+          {
+            "fieldPath": "bookId",
+            "columnName": "book_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "author",
+            "columnName": "author",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sourceType",
+            "columnName": "source_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sourceHashSha256",
+            "columnName": "source_hash_sha256",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localFilePath",
+            "columnName": "local_file_path",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "importStatus",
+            "columnName": "import_status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isHidden",
+            "columnName": "is_hidden",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentEpisodeId",
+            "columnName": "current_episode_id",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "currentParagraphSeq",
+            "columnName": "current_paragraph_seq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxReadSeq",
+            "columnName": "max_read_seq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedEpisodesCount",
+            "columnName": "completed_episodes_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedAtUtc",
+            "columnName": "completed_at_utc",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "lastReadAtUtc",
+            "columnName": "last_read_at_utc",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "importedAtUtc",
+            "columnName": "imported_at_utc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pdfNoticeDismissed",
+            "columnName": "pdf_notice_dismissed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attributionNote",
+            "columnName": "attribution_note",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "book_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_books_source_hash_sha256",
+            "unique": false,
+            "columnNames": [
+              "source_hash_sha256"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_books_source_hash_sha256` ON `${TABLE_NAME}` (`source_hash_sha256`)"
+          },
+          {
+            "name": "index_books_is_hidden_import_status",
+            "unique": false,
+            "columnNames": [
+              "is_hidden",
+              "import_status"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_books_is_hidden_import_status` ON `${TABLE_NAME}` (`is_hidden`, `import_status`)"
+          }
+        ]
+      },
+      {
+        "tableName": "episodes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`episode_id` TEXT NOT NULL, `book_id` TEXT NOT NULL, `episode_index` INTEGER NOT NULL, `section_title` TEXT NOT NULL, `word_count` INTEGER NOT NULL, `est_read_minutes` INTEGER NOT NULL, `start_paragraph_seq` INTEGER NOT NULL, `end_paragraph_seq` INTEGER NOT NULL, `recap_bullets_json` TEXT, `is_completed` INTEGER NOT NULL, `completed_at_utc` INTEGER, PRIMARY KEY(`episode_id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`book_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "episodeId",
+            "columnName": "episode_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookId",
+            "columnName": "book_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "episodeIndex",
+            "columnName": "episode_index",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sectionTitle",
+            "columnName": "section_title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wordCount",
+            "columnName": "word_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estReadMinutes",
+            "columnName": "est_read_minutes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startParagraphSeq",
+            "columnName": "start_paragraph_seq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endParagraphSeq",
+            "columnName": "end_paragraph_seq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "recapBulletsJson",
+            "columnName": "recap_bullets_json",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "isCompleted",
+            "columnName": "is_completed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedAtUtc",
+            "columnName": "completed_at_utc",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "episode_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_episodes_book_id_episode_index",
+            "unique": true,
+            "columnNames": [
+              "book_id",
+              "episode_index"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_episodes_book_id_episode_index` ON `${TABLE_NAME}` (`book_id`, `episode_index`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "books",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "book_id"
+            ],
+            "referencedColumns": [
+              "book_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "paragraphs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`paragraph_id` TEXT NOT NULL, `book_id` TEXT NOT NULL, `episode_id` TEXT NOT NULL, `seq_index` INTEGER NOT NULL, `paragraph_type` TEXT NOT NULL, `text_content` TEXT NOT NULL, `inline_marks_json` TEXT, PRIMARY KEY(`paragraph_id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`book_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`episode_id`) REFERENCES `episodes`(`episode_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "paragraphId",
+            "columnName": "paragraph_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookId",
+            "columnName": "book_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "episodeId",
+            "columnName": "episode_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "seqIndex",
+            "columnName": "seq_index",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paragraphType",
+            "columnName": "paragraph_type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "textContent",
+            "columnName": "text_content",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "inlineMarksJson",
+            "columnName": "inline_marks_json",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "paragraph_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_paragraphs_book_id_seq_index",
+            "unique": true,
+            "columnNames": [
+              "book_id",
+              "seq_index"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_paragraphs_book_id_seq_index` ON `${TABLE_NAME}` (`book_id`, `seq_index`)"
+          },
+          {
+            "name": "index_paragraphs_episode_id_seq_index",
+            "unique": false,
+            "columnNames": [
+              "episode_id",
+              "seq_index"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_paragraphs_episode_id_seq_index` ON `${TABLE_NAME}` (`episode_id`, `seq_index`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "books",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "book_id"
+            ],
+            "referencedColumns": [
+              "book_id"
+            ]
+          },
+          {
+            "table": "episodes",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "episode_id"
+            ],
+            "referencedColumns": [
+              "episode_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "name_entities",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entity_id` TEXT NOT NULL, `book_id` TEXT NOT NULL, `canonical_name` TEXT NOT NULL, `source_kind` TEXT NOT NULL, `short_role` TEXT, `first_mention_seq` INTEGER NOT NULL, PRIMARY KEY(`entity_id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`book_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "entityId",
+            "columnName": "entity_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookId",
+            "columnName": "book_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "canonicalName",
+            "columnName": "canonical_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sourceKind",
+            "columnName": "source_kind",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shortRole",
+            "columnName": "short_role",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "firstMentionSeq",
+            "columnName": "first_mention_seq",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "entity_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_name_entities_book_id_canonical_name",
+            "unique": false,
+            "columnNames": [
+              "book_id",
+              "canonical_name"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_name_entities_book_id_canonical_name` ON `${TABLE_NAME}` (`book_id`, `canonical_name`)"
+          },
+          {
+            "name": "index_name_entities_book_id_first_mention_seq",
+            "unique": false,
+            "columnNames": [
+              "book_id",
+              "first_mention_seq"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_name_entities_book_id_first_mention_seq` ON `${TABLE_NAME}` (`book_id`, `first_mention_seq`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "books",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "book_id"
+            ],
+            "referencedColumns": [
+              "book_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "name_aliases",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`alias_id` TEXT NOT NULL, `book_id` TEXT NOT NULL, `entity_id` TEXT NOT NULL, `alias_text` TEXT NOT NULL, `normalized_alias` TEXT NOT NULL, `tone_note` TEXT, PRIMARY KEY(`alias_id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`book_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`entity_id`) REFERENCES `name_entities`(`entity_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "aliasId",
+            "columnName": "alias_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookId",
+            "columnName": "book_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entityId",
+            "columnName": "entity_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "aliasText",
+            "columnName": "alias_text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "normalizedAlias",
+            "columnName": "normalized_alias",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "toneNote",
+            "columnName": "tone_note",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "alias_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_name_aliases_book_id_normalized_alias",
+            "unique": false,
+            "columnNames": [
+              "book_id",
+              "normalized_alias"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_name_aliases_book_id_normalized_alias` ON `${TABLE_NAME}` (`book_id`, `normalized_alias`)"
+          },
+          {
+            "name": "index_name_aliases_entity_id",
+            "unique": false,
+            "columnNames": [
+              "entity_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_name_aliases_entity_id` ON `${TABLE_NAME}` (`entity_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "books",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "book_id"
+            ],
+            "referencedColumns": [
+              "book_id"
+            ]
+          },
+          {
+            "table": "name_entities",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "entity_id"
+            ],
+            "referencedColumns": [
+              "entity_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "entity_facts",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`fact_id` TEXT NOT NULL, `book_id` TEXT NOT NULL, `entity_id` TEXT NOT NULL, `unlocked_at_seq` INTEGER NOT NULL, `fact_text` TEXT NOT NULL, `sort_order` INTEGER NOT NULL, PRIMARY KEY(`fact_id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`book_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`entity_id`) REFERENCES `name_entities`(`entity_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "factId",
+            "columnName": "fact_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookId",
+            "columnName": "book_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entityId",
+            "columnName": "entity_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "unlockedAtSeq",
+            "columnName": "unlocked_at_seq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "factText",
+            "columnName": "fact_text",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sortOrder",
+            "columnName": "sort_order",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "fact_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_entity_facts_entity_id_unlocked_at_seq",
+            "unique": false,
+            "columnNames": [
+              "entity_id",
+              "unlocked_at_seq"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entity_facts_entity_id_unlocked_at_seq` ON `${TABLE_NAME}` (`entity_id`, `unlocked_at_seq`)"
+          },
+          {
+            "name": "index_entity_facts_book_id",
+            "unique": false,
+            "columnNames": [
+              "book_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_entity_facts_book_id` ON `${TABLE_NAME}` (`book_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "books",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "book_id"
+            ],
+            "referencedColumns": [
+              "book_id"
+            ]
+          },
+          {
+            "table": "name_entities",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "entity_id"
+            ],
+            "referencedColumns": [
+              "entity_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "name_mentions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mention_id` TEXT NOT NULL, `book_id` TEXT NOT NULL, `entity_id` TEXT NOT NULL, `paragraph_seq` INTEGER NOT NULL, `episode_id` TEXT NOT NULL, `char_start` INTEGER NOT NULL, `char_end` INTEGER NOT NULL, `surface_text` TEXT NOT NULL, PRIMARY KEY(`mention_id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`book_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`entity_id`) REFERENCES `name_entities`(`entity_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "mentionId",
+            "columnName": "mention_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookId",
+            "columnName": "book_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entityId",
+            "columnName": "entity_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paragraphSeq",
+            "columnName": "paragraph_seq",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "episodeId",
+            "columnName": "episode_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "charStart",
+            "columnName": "char_start",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "charEnd",
+            "columnName": "char_end",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "surfaceText",
+            "columnName": "surface_text",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "mention_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_name_mentions_book_id_entity_id_paragraph_seq",
+            "unique": false,
+            "columnNames": [
+              "book_id",
+              "entity_id",
+              "paragraph_seq"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_name_mentions_book_id_entity_id_paragraph_seq` ON `${TABLE_NAME}` (`book_id`, `entity_id`, `paragraph_seq`)"
+          },
+          {
+            "name": "index_name_mentions_book_id_episode_id_paragraph_seq",
+            "unique": false,
+            "columnNames": [
+              "book_id",
+              "episode_id",
+              "paragraph_seq"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_name_mentions_book_id_episode_id_paragraph_seq` ON `${TABLE_NAME}` (`book_id`, `episode_id`, `paragraph_seq`)"
+          },
+          {
+            "name": "index_name_mentions_entity_id",
+            "unique": false,
+            "columnNames": [
+              "entity_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_name_mentions_entity_id` ON `${TABLE_NAME}` (`entity_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "books",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "book_id"
+            ],
+            "referencedColumns": [
+              "book_id"
+            ]
+          },
+          {
+            "table": "name_entities",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "entity_id"
+            ],
+            "referencedColumns": [
+              "entity_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "reading_session_logs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`log_id` TEXT NOT NULL, `book_id` TEXT, `book_title_snapshot` TEXT NOT NULL, `episode_id_snapshot` TEXT NOT NULL, `episode_index_snapshot` INTEGER NOT NULL, `completed_at_utc` INTEGER NOT NULL, `local_date_iso` TEXT NOT NULL, PRIMARY KEY(`log_id`), FOREIGN KEY(`book_id`) REFERENCES `books`(`book_id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "logId",
+            "columnName": "log_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookId",
+            "columnName": "book_id",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "bookTitleSnapshot",
+            "columnName": "book_title_snapshot",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "episodeIdSnapshot",
+            "columnName": "episode_id_snapshot",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "episodeIndexSnapshot",
+            "columnName": "episode_index_snapshot",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedAtUtc",
+            "columnName": "completed_at_utc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localDateIso",
+            "columnName": "local_date_iso",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "log_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_reading_session_logs_local_date_iso",
+            "unique": false,
+            "columnNames": [
+              "local_date_iso"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_reading_session_logs_local_date_iso` ON `${TABLE_NAME}` (`local_date_iso`)"
+          },
+          {
+            "name": "index_reading_session_logs_book_id",
+            "unique": false,
+            "columnNames": [
+              "book_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_reading_session_logs_book_id` ON `${TABLE_NAME}` (`book_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "books",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "book_id"
+            ],
+            "referencedColumns": [
+              "book_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "user_preferences",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pref_id` INTEGER NOT NULL, `theme_mode` TEXT NOT NULL, `font_size_sp` INTEGER NOT NULL, `line_height_mode` TEXT NOT NULL, `updated_at_utc` INTEGER NOT NULL, PRIMARY KEY(`pref_id`))",
+        "fields": [
+          {
+            "fieldPath": "prefId",
+            "columnName": "pref_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeMode",
+            "columnName": "theme_mode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fontSizeSp",
+            "columnName": "font_size_sp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lineHeightMode",
+            "columnName": "line_height_mode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAtUtc",
+            "columnName": "updated_at_utc",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "pref_id"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c7d085f8502aa28fe5ef004b2c26c843')"
+    ]
+  }
+}

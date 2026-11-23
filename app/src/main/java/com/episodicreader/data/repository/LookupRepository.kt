@@ -1,62 +1,96 @@
 package com.episodicreader.data.repository
 
-import com.episodicreader.data.db.dao.LookupDao
+import com.episodicreader.data.db.AppDatabase
+import com.episodicreader.data.db.entity.EntityFactEntity
+import com.episodicreader.data.db.entity.NameAliasEntity
 import com.episodicreader.data.db.entity.NameEntity
+import com.episodicreader.data.db.entity.ParagraphEntity
+import com.episodicreader.data.db.model.EpisodeKeyNameRow
 import com.episodicreader.data.db.model.MentionExcerptRow
-import com.episodicreader.data.db.model.UnlockedFactRow
+import com.episodicreader.data.db.model.ParagraphMentionSpan
 
-data class PriorMentionsCard(
-    val firstSeen: MentionExcerptRow?,
-    val recentMentions: List<MentionExcerptRow>,
-)
+class LookupRepository(
+    db: AppDatabase,
+) {
+    private val lookupDao = db.lookupDao()
+    private val paragraphDao = db.paragraphDao()
 
-class LookupRepository(private val lookupDao: LookupDao) {
-    suspend fun findReadableEntity(
+    suspend fun getMentionSpansForEpisode(
         bookId: String,
-        normalizedKey: String,
-        maxReadSeq: Int,
-    ): NameEntity? {
-        require(maxReadSeq >= -1)
-        if (maxReadSeq == -1) return null
-        return lookupDao.findEntity(bookId, normalizedKey.lowercase(), maxReadSeq)
-    }
+        episodeId: String,
+    ): List<ParagraphMentionSpan> = lookupDao.getMentionSpansForEpisode(bookId, episodeId)
 
-    suspend fun getPriorMentions(
-        bookId: String,
-        entityId: String,
-        currentParagraphSeq: Int,
-        maxReadSeq: Int,
-    ): PriorMentionsCard {
-        require(currentParagraphSeq >= 0)
-        require(maxReadSeq >= -1)
-        if (maxReadSeq == -1) return PriorMentionsCard(null, emptyList())
+    suspend fun getEntityById(bookId: String, entityId: String): NameEntity? =
+        lookupDao.getEntityById(bookId, entityId)
 
-        val first = lookupDao.firstPriorMention(
-            bookId = bookId,
-            entityId = entityId,
-            currentParagraphSeq = currentParagraphSeq,
-            maxReadSeq = maxReadSeq,
-        )
-        val recent = lookupDao.recentPriorMentions(
-            bookId = bookId,
-            entityId = entityId,
-            currentParagraphSeq = currentParagraphSeq,
-            maxReadSeq = maxReadSeq,
-            limit = 4,
-        )
-            .filterNot { it.mentionId == first?.mentionId }
-            .take(3)
+    suspend fun getAllAliasesForBook(bookId: String): List<NameAliasEntity> =
+        lookupDao.getAllAliasesForBook(bookId)
 
-        return PriorMentionsCard(first, recent)
-    }
+    suspend fun findAliasByNormalized(bookId: String, normalizedAlias: String): NameAliasEntity? =
+        lookupDao.findAliasByNormalized(bookId, normalizedAlias)
+
+    suspend fun getAliasesForEntity(entityId: String): List<NameAliasEntity> =
+        lookupDao.getAliasesForEntity(entityId)
 
     suspend fun getUnlockedFacts(
+        bookId: String,
         entityId: String,
         maxReadSeq: Int,
-    ): List<UnlockedFactRow> {
-        require(maxReadSeq >= -1)
-        if (maxReadSeq == -1) return emptyList()
-        return lookupDao.unlockedFacts(entityId, maxReadSeq)
-    }
-}
+    ): List<EntityFactEntity> = lookupDao.getUnlockedFacts(bookId, entityId, maxReadSeq)
 
+    suspend fun getFirstPriorMention(
+        bookId: String,
+        entityId: String,
+        maxReadSeq: Int,
+        beforeParagraphSeq: Int,
+    ): MentionExcerptRow? = lookupDao.getFirstPriorMention(
+        bookId = bookId,
+        entityId = entityId,
+        maxReadSeq = maxReadSeq,
+        beforeParagraphSeq = beforeParagraphSeq,
+    )
+
+    suspend fun getRecentPriorMentions(
+        bookId: String,
+        entityId: String,
+        maxReadSeq: Int,
+        beforeParagraphSeq: Int,
+        excludeMentionId: String,
+        limit: Int = 3,
+    ): List<MentionExcerptRow> = lookupDao.getRecentPriorMentions(
+        bookId = bookId,
+        entityId = entityId,
+        maxReadSeq = maxReadSeq,
+        beforeParagraphSeq = beforeParagraphSeq,
+        excludeMentionId = excludeMentionId,
+        limit = limit,
+    )
+
+    suspend fun getFirstMentionUpTo(
+        bookId: String,
+        entityId: String,
+        maxReadSeq: Int,
+    ): MentionExcerptRow? = lookupDao.getFirstMentionUpTo(bookId, entityId, maxReadSeq)
+
+    suspend fun getPriorParagraphsStrictlyBefore(
+        bookId: String,
+        maxReadSeq: Int,
+        beforeSeq: Int,
+    ): List<ParagraphEntity> = paragraphDao.getPriorParagraphsStrictlyBefore(
+        bookId = bookId,
+        maxReadSeq = maxReadSeq,
+        beforeSeq = beforeSeq,
+    )
+
+    suspend fun getTopEntitiesForEpisode(
+        bookId: String,
+        episodeId: String,
+        maxReadSeq: Int,
+        limit: Int = 5,
+    ): List<EpisodeKeyNameRow> = lookupDao.getTopEntitiesForEpisode(
+        bookId = bookId,
+        episodeId = episodeId,
+        maxReadSeq = maxReadSeq,
+        limit = limit,
+    )
+}

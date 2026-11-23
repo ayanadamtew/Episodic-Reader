@@ -1,0 +1,922 @@
+{
+  "book_id": "starter_white_nights_dostoevsky_v1",
+  "title": "White Nights",
+  "author": "Fyodor Dostoevsky",
+  "attribution_note": "Public domain (1848). Curated episodic edition prepared for offline reading in Episodic Reader.",
+  "episodes": [
+    {
+      "episode_id": "wn_ep_1",
+      "episode_index": 1,
+      "section_title": "First Night",
+      "word_count": 973,
+      "est_read_minutes": 5,
+      "recap_bullets": [
+        "During a luminous May night in St. Petersburg, the solitary Dreamer senses the city's familiar houses speaking to him like old companions.",
+        "On the canal embankment he meets Nastenka weeping by the railing and protects her from a rude passerby.",
+        "After walking her home, she agrees to meet him again at ten o'clock the next evening on one strict condition: he must not fall in love with her."
+      ],
+      "paragraphs": [
+        {
+          "seq_index": 0,
+          "paragraph_type": "HEADING",
+          "text_content": "First Night",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 1,
+          "paragraph_type": "BODY",
+          "text_content": "It was a bright, clear May night in St. Petersburg, one of those northern spring evenings when twilight lingers over the granite embankments until dawn begins to stir in the east. I had lived in the city for eight quiet years, yet I had scarcely made a single close acquaintance. Still, the streets themselves seemed to know me by sight. Every yellow courtyard wall, every painted façade along the Fontanka, and every iron railing along the canals felt like a silent companion that greeted me whenever I walked out at dusk.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 2,
+          "paragraph_type": "BODY",
+          "text_content": "That morning I had woken with an odd restlessness. All day the spring air had smelled of wet stone, warm birch buds, and distant summer cottages. Because the wealthier households were already packing trunks for the countryside, the city looked strangely deserted, as if everyone had left for a holiday and forgotten to invite me. Even old Matryona, my silent housekeeper, seemed wrapped in her own thoughts as she swept the tiny entry hall and set my tea beside the window without a word.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 3,
+          "paragraph_type": "BODY",
+          "text_content": "At dusk I wandered beyond the city gates where the fields lay pale beneath a silver sky. The meadow air made my heart feel lighter than it had in months. Yet as I walked back along the canal at ten o'clock, the familiar solitude returned, gentle and heavy all at once. I leaned for a moment against the stone parapet and watched the dark water carry ripples of reflected lamplight toward the Neva.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 4,
+          "paragraph_type": "BODY",
+          "text_content": "Then I noticed a young woman standing a few paces ahead of me, her elbows resting on the iron railing. She wore a neat yellow bonnet and a dark cloak, and her shoulders trembled as though she were trying to hide quiet tears from the passing street. I stopped, uncertain whether to speak or pass politely by. A solitary man who lives mostly inside his own daydreams rarely knows the proper words for real sorrow.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 5,
+          "paragraph_type": "BODY",
+          "text_content": "Before I could decide, a gentleman in an evening coat strolled past, saw her standing alone, and approached with an insolent smile. Startled, she hurried across the pavement toward the opposite side of the canal, clutching her cloak tightly around her. The stranger quickened his pace and followed close behind her, muttering impertinent compliments. In that instant my shyness vanished. Grasping my walking stick firmly, I crossed the road in three quick strides and stepped between them.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 6,
+          "paragraph_type": "BODY",
+          "text_content": "The stranger measured me with a brief scowl, realized I had no intention of stepping aside, and retreated down a side lane. The young woman halted beneath a streetlamp, breathing rapidly, her dark eyes wide with relief. I removed my hat and assured her that she was entirely safe and that I would walk a respectful distance behind her if she preferred, or beside her if she felt steadier with company.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 7,
+          "paragraph_type": "BODY",
+          "text_content": "She looked closely at my face and gave a small, hesitant smile. 'Please walk beside me,' she said softly. 'My house is not far, and my heart is still racing.' As we set off along the embankment, her composure quickly returned, and she teased me gently for looking even more frightened than she had been. Indeed, my hands were cold and my voice shook, for I had never spoken so freely to a woman in all my years as a St. Petersburg dreamer.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 8,
+          "paragraph_type": "BODY",
+          "text_content": "She told me that her name was Nastenka, though her elderly Grandmother sometimes called her Anastasia when she wanted to sound solemn. Hearing her voice fill the quiet street felt like waking inside a story I had spent years imagining. I confessed, half laughing at myself, that I was a confirmed dreamer who knew every painted house in the district better than any living person. Nastenka listened with bright curiosity, nodding as though she understood loneliness better than I supposed.",
+          "inline_marks": [
+            {
+              "start": 92,
+              "end": 101,
+              "style": "ITALIC"
+            }
+          ]
+        },
+        {
+          "seq_index": 9,
+          "paragraph_type": "BODY",
+          "text_content": "At the corner near her wooden house, she paused beside the narrow gate and looked back toward the pale sky above the canal. 'You have been so kind to me tonight,' she said, clasping her gloved hands together. 'Wait—do you often walk along this embankment at ten o'clock?' I answered eagerly that I passed the very same bridge nearly every evening in spring.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 10,
+          "paragraph_type": "BODY",
+          "text_content": "'Then come to the bench by the canal tomorrow night at ten,' Nastenka said quickly, lowering her voice as if sharing a secret. 'I must wait there for someone, or at least wait for an answer, and I cannot bear to stand alone again. We shall talk, and you shall tell me your whole history, and I shall tell you mine.' My heart leapt so sharply that I could scarcely breathe.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 11,
+          "paragraph_type": "BODY",
+          "text_content": "Yet before opening the gate she turned back with sudden seriousness, raising one finger in warning. 'Listen carefully, my new friend. I will meet you tomorrow only on one sacred condition: you must promise not to fall in love with me. That is impossible, I assure you! Give me your word as an honest man, and we can be the truest friends in St. Petersburg.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 12,
+          "paragraph_type": "BODY",
+          "text_content": "I promised at once, though even as the words left my lips I wondered how a lonely dreamer could keep so fragile a vow. Nastenka smiled gratefully, pressed my hand for a single heartbeat, and slipped inside the courtyard gate. I stood for a long while listening to her footsteps climb the wooden stair, feeling as though the silent city had finally opened its doors to me.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 13,
+          "paragraph_type": "SCENE_BREAK",
+          "text_content": "* * *",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 14,
+          "paragraph_type": "BODY",
+          "text_content": "All the way back to my narrow room I kept repeating her name beneath the pale northern sky. When Matryona opened the door with a candle in her hand, she peered at my flushed face in mild astonishment, for I usually returned home as mute as a shadow. I could not sleep; I sat by the open window until sunrise, counting the hours until ten o'clock would strike beside the canal.",
+          "inline_marks": []
+        }
+      ]
+    },
+    {
+      "episode_id": "wn_ep_2",
+      "episode_index": 2,
+      "section_title": "Second Night",
+      "word_count": 943,
+      "est_read_minutes": 5,
+      "recap_bullets": [
+        "The Dreamer arrives early at the canal embankment and finds Nastenka already waiting, eager to hear his story first.",
+        "He confesses how eight years of solitude in St. Petersburg turned him into a nocturnal dreamer living through imagination rather than action.",
+        "Moved by his honesty, Nastenka urges him to embrace real life and promises to tell him her own secret next."
+      ],
+      "paragraphs": [
+        {
+          "seq_index": 15,
+          "paragraph_type": "HEADING",
+          "text_content": "Second Night",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 16,
+          "paragraph_type": "BODY",
+          "text_content": "The next day dragged by with unbearable slowness. I tried to read, tried to arrange the dusty papers on my writing table, and even asked Matryona whether the cobwebs near the ceiling had been there since winter. She answered with a quiet sigh and went back to peeling potatoes. By nine o'clock I could wait inside no longer; I brushed my coat twice, hurried down the staircase, and reached the granite embankment nearly half an hour early.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 17,
+          "paragraph_type": "BODY",
+          "text_content": "To my delight, Nastenka was already sitting on the wooden bench facing the water. When she saw me approaching, she stood up with lively warmth and offered both hands. 'You are punctual!' she cried. 'Look, we have kept our bargain without a single awkward word. Sit beside me, and begin your confession at once. Yesterday you called yourself a dreamer—what sort of strange creature is a dreamer?'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 18,
+          "paragraph_type": "BODY",
+          "text_content": "I sat down on the cool wooden slats and tried to speak lightly, yet the stillness of the white night drew out the truth from the bottom of my chest. I told Nastenka that in the quiet corners of St. Petersburg there live quiet, unremarkable men who spend their evenings pacing the streets, inventing whole kingdoms inside their minds while ordinary life rushes past them in carriages.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 19,
+          "paragraph_type": "BODY",
+          "text_content": "During the daylight hours, I explained, I perform my small clerk's duties at an office desk without speaking more than ten sentences. Nobody notices when I enter or leave. Yet the moment twilight softens the brickwork and the lamps begin to glow along the Nevsky, a curious fever awakens inside me. In my room with Matryona asleep in the kitchen, my imagination lights up like an empty theater suddenly filled with music.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 20,
+          "paragraph_type": "BODY",
+          "text_content": "In those solitary hours I become a poet, a traveler crossing mountain passes, a devoted friend rescuing the unfortunate, or a beloved companion walking under Italian stars. Everything I miss in waking life arrives without effort inside a reverie. There is no rejection in a daydream, no clumsy stammering, and no fear of a mocking glance. Yet every dawn brings a bitter reckoning.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 21,
+          "paragraph_type": "BLOCKQUOTE",
+          "text_content": "When the gray morning finally enters through the windowpane, the enchanted palace dissolves into peeling wallpaper, and the dreamer realizes another year has slipped away without leaving a single true memory behind.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 22,
+          "paragraph_type": "BODY",
+          "text_content": "I went on to tell Nastenka how the anniversary of each solitary spring catches a dreamer unawares. He walks down a familiar avenue, smells the linden blossoms after a shower, and suddenly wonders why his own life feels like a book whose pages were never cut. He remembers imaginary victories and invented conversations with astonishing clarity, yet cannot recall a single real afternoon spent laughing with a living companion at an ordinary wooden table.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 23,
+          "paragraph_type": "BODY",
+          "text_content": "As I spoke, my voice grew quieter, and I stared down at the cobblestones between my boots, half ashamed of exposing so fragile a heart. Beside me Nastenka sat completely still. When I glanced up, I saw tears shining once more along her lashes, though her expression was full of tender pity rather than mockery.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 24,
+          "paragraph_type": "BODY",
+          "text_content": "'Oh, my poor friend,' she murmured, resting her hand lightly on my sleeve. 'How terribly lonely you have been! You talk about your dreams as though they were an old habit you cannot break, yet anyone can hear how deeply you long for a real friend beside you. Promise me you will not waste another eight years locked inside that quiet room with only Matryona and your shadows!'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 25,
+          "paragraph_type": "BODY",
+          "text_content": "Her simple kindness undid every defense I had built for nearly a decade. I told her that one hour of real conversation beside the canal was worth a thousand solitary nights of gilded fantasy. Even the breeze off the water felt warmer, and the distant chime of a church bell seemed to celebrate my return to the living world. For the first time since youth, I felt genuinely seen.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 26,
+          "paragraph_type": "BODY",
+          "text_content": "Nastenka wiped her eyes with a folded handkerchief and smiled briskly, trying to brighten the mood between us. 'Very well, Mr. Dreamer, from tonight onward you are no longer alone. You have a real friend who will scold you whenever you drift back into the clouds. Now it is only fair that I keep my half of the promise and tell you why I was weeping by this railing yesterday.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 27,
+          "paragraph_type": "BODY",
+          "text_content": "She drew her dark cloak closer around her shoulders and gazed across the silver surface of the canal as though searching the far bank for a familiar silhouette. 'You must listen patiently,' she warned, 'because my story is not grand like the romances in books, yet to me it holds my whole future.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 28,
+          "paragraph_type": "BODY",
+          "text_content": "I leaned forward and promised to listen to every word without interrupting. The street behind us had grown hush-quiet, save for the faint clatter of a distant cab crossing a stone bridge. Beneath the luminous northern sky, Nastenka clasped her fingers together, took a steady breath, and began to recount the quiet, sheltered life she had led under her Grandmother's watchful roof.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 29,
+          "paragraph_type": "BODY",
+          "text_content": "Hearing her prepare to confide in me filled my heart with both gratitude and a quiet, unspoken dread. I remembered the sacred condition she had named at her courtyard gate the evening before. I told myself sternly that I was here only as a loyal brother and confidant, and that whatever sorrow weighed on Nastenka's heart, I would bear it alongside her faithfully.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 30,
+          "paragraph_type": "BODY",
+          "text_content": "Across the canal a solitary window flickered with candlelight and went dark, leaving only the pale silver glow of the northern summer sky. Nastenka straightened her shawl, looked briefly into my eyes to be sure I was listening with my whole heart, and began her story from the beginning.",
+          "inline_marks": []
+        }
+      ]
+    },
+    {
+      "episode_id": "wn_ep_3",
+      "episode_index": 3,
+      "section_title": "Nastenka's Story",
+      "word_count": 925,
+      "est_read_minutes": 5,
+      "recap_bullets": [
+        "Nastenka describes growing up virtually pinned to the dress of her blind Grandmother in a quiet wooden house.",
+        "Their routine changed when a polite young Lodger rented the attic room, lent them books, and invited them to the opera.",
+        "Before departing for Moscow on business, the Lodger promised to return in exactly one year to marry Nastenka—and that year has just ended."
+      ],
+      "paragraphs": [
+        {
+          "seq_index": 31,
+          "paragraph_type": "HEADING",
+          "text_content": "Nastenka's Story",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 32,
+          "paragraph_type": "BODY",
+          "text_content": "'I am seventeen years old,' Nastenka began, 'and for as long as I can remember I have lived with my Grandmother in that small yellow wooden house you saw last night. Grandmother is completely blind, yet her ears are sharper than a watchman's, and she remembers every creak of the floorboards. Because she was terrified that a lively girl might fall into mischief, she came up with an extraordinary safeguard: whenever we sat together in the parlor, she pinned the hem of my dress directly to hers with a stout sewing pin!'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 33,
+          "paragraph_type": "BODY",
+          "text_content": "Despite the seriousness in her eyes, Nastenka let out a quick, bright laugh at the memory. 'Imagine sitting hour after hour knitting stockings while tethered by a single pin! Only when Grandmother dozed off in her armchair could I slip the pin free, tiptoe to the hallway, or read a few pages by the window before darting back to fasten myself in place again.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 34,
+          "paragraph_type": "BODY",
+          "text_content": "Even their rare Sunday walks followed the same strict routine, with Nastenka guiding Grandmother slowly down the quiet lane while Grandmother kept one hand resting firmly on her elbow and asked the name of every carriage that passed. Still, Nastenka spoke of her Grandmother with genuine affection rather than anger, explaining that the old woman's strictness came from fear of leaving an orphaned granddaughter unprotected in a vast, indifferent city.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 35,
+          "paragraph_type": "BODY",
+          "text_content": "Their modest income came from a small pension and from renting out the bright attic room upstairs. For years their tenants had been elderly clerks who scarcely spoke above a whisper. Then one autumn afternoon a young gentleman arrived to inspect the upper chamber. This new Lodger was quiet, courteous, and slender, with thoughtful eyes and a modest wardrobe that spoke of honest struggle rather than wealth.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 36,
+          "paragraph_type": "BODY",
+          "text_content": "At first the Lodger kept strictly to his studies upstairs, greeting Grandmother politely whenever he passed the parlor door. Yet after a few weeks he noticed how rarely Nastenka left the house and began sending down volumes of Walter Scott and Pushkin through the maid. Reading those pages opened wide windows inside the shuttered parlor. Soon Grandmother herself enjoyed hearing the stories read aloud during long winter evenings.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 37,
+          "paragraph_type": "BODY",
+          "text_content": "One evening in early spring, the Lodger surprised them with three tickets to a performance of The Barber of Seville. Grandmother protested at first that an old blind woman had no place in a crowded theater, yet his gentle insistence won her over. For Nastenka, sitting beneath the glittering chandelier while the orchestra swelled felt like stepping into another existence altogether.",
+          "inline_marks": [
+            {
+              "start": 94,
+              "end": 115,
+              "style": "ITALIC"
+            }
+          ]
+        },
+        {
+          "seq_index": 38,
+          "paragraph_type": "BODY",
+          "text_content": "After that night, the Lodger began visiting the parlor for tea every evening. He spoke with quiet earnestness about his hopes of securing a reliable post, and Nastenka found herself listening for his footsteps on the attic stair from noon onward. Neither of them spoke openly of affection, yet every shared glance across the teapot carried a silent understanding.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 39,
+          "paragraph_type": "BODY",
+          "text_content": "Then came the evening that changed everything. The Lodger announced that urgent family business required him to leave St. Petersburg for Moscow for an entire year. Hearing the news, Nastenka felt the floor drop beneath her feet. While Grandmother slept later that night, she gathered all her courage, packed a tiny bundle of belongings, and climbed the narrow staircase to the attic room.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 40,
+          "paragraph_type": "BODY",
+          "text_content": "With tears streaming down her cheeks, she confessed that she could not bear to return to the pinned dress and silent parlor without him, and asked him plainly whether he loved her enough to take her along. The Lodger stood pale and trembling beside his packed trunk. Instead of taking advantage of her trust, he took both her hands with deep tenderness and spoke with solemn honor.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 41,
+          "paragraph_type": "BLOCKQUOTE",
+          "text_content": "'Nastenka, I love you with my whole heart, yet today I have neither money nor a settled home to offer you. Give me one honest year in Moscow to arrange my affairs. On the very day I return to St. Petersburg, I will come to you, and if you still care for me, we shall never part again.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 42,
+          "paragraph_type": "BODY",
+          "text_content": "Calmed by his sincerity, Nastenka agreed to wait. The Lodger departed at sunrise, and twelve slow months passed like twelve winters. Grandmother never guessed what had passed on the attic stair, though she noticed how patiently Nastenka sat beside the window counting the calendar leaves. At last, three days ago, the full year reached its end.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 43,
+          "paragraph_type": "BODY",
+          "text_content": "Worse still, Nastenka had learned from a neighbor that the Lodger had already returned to St. Petersburg three days earlier! Yet he had neither called at the wooden house nor sent a single line. 'That is why you found me crying by the canal,' she whispered, clasping her hands tightly. 'I wrote him a letter begging him to meet me here if he still remembers his promise—and I have no one in the city I can trust to deliver it.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 44,
+          "paragraph_type": "BODY",
+          "text_content": "She looked up at me with hopeful, shining eyes, waiting to see whether her new friend would judge her rash or stand beside her without hesitation. Every instinct in my chest told me how fragile her hope was, yet I refused to let a single shadow of doubt cross my face.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 45,
+          "paragraph_type": "BODY",
+          "text_content": "At once I offered to carry the letter myself first thing the next morning. Nastenka's face lit up with sudden hope as she drew a neatly folded, wax-sealed envelope from her cloak pocket and placed it carefully in my palm. Even though a quiet ache settled in my chest as I slipped the letter into my coat, I vowed silently to serve her happiness above my own.",
+          "inline_marks": []
+        }
+      ]
+    },
+    {
+      "episode_id": "wn_ep_4",
+      "episode_index": 4,
+      "section_title": "Third Night",
+      "word_count": 948,
+      "est_read_minutes": 5,
+      "recap_bullets": [
+        "After a day of relentless Petersburg rain delays their meeting, the Dreamer delivers Nastenka's sealed letter to the Lodger's address.",
+        "On the Third Night, Nastenka anxiously checks every passing silhouette along the canal while confessing her fear that the Lodger has forgotten her.",
+        "The Dreamer comforts her with steadfast devotion, quietly hiding the depth of his growing love to honor his promise."
+      ],
+      "paragraphs": [
+        {
+          "seq_index": 46,
+          "paragraph_type": "HEADING",
+          "text_content": "Third Night",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 47,
+          "paragraph_type": "BODY",
+          "text_content": "The morning after Nastenka's confession dawned cold and gray, with heavy sheets of Petersburg rain sweeping across the canals. Despite the downpour, I woke early, buttoning my coat tightly over the sealed envelope in my breast pocket. Matryona watched from the doorway in silent bewilderment as I set out into the storm without touching my breakfast bread.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 48,
+          "paragraph_type": "BODY",
+          "text_content": "I walked swiftly across two bridges to the boarding house address written in Nastenka's neat hand. The porter confirmed that the young gentleman from Moscow was indeed staying in an upper chamber, though he had stepped out on business an hour earlier. I left the letter strictly in the porter's care with a small silver coin and a firm instruction to place it directly into the Lodger's hands the moment he returned.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 49,
+          "paragraph_type": "BODY",
+          "text_content": "All afternoon the rain hammered against my windowpane, turning the cobbled lanes into dark mirrors. Because of the relentless storm, Nastenka and I could not meet that evening, and I spent the long twilight pacing my tiny room. Every clock chime made me imagine the Lodger breaking the wax seal, reading her tender words, and hurrying through the wet streets to claim her hand.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 50,
+          "paragraph_type": "BODY",
+          "text_content": "Matryona noticed my restless pacing and silently placed a fresh pot of hot tea beside the lamp without asking a single question. I stared at the steam curling toward the low ceiling and realized with quiet astonishment how completely my old solitary daydreams had vanished. I no longer invented distant Italian valleys or heroic speeches; my entire world now lived on a single wooden bench beside the canal.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 51,
+          "paragraph_type": "BODY",
+          "text_content": "When the sky finally cleared on the following evening—our Third Night—the air smelled clean and sharp, washed bright by yesterday's storm. I reached the wooden bench on the embankment at ten o'clock sharp. Nastenka was already pacing beside the iron railing, glancing constantly toward the stone bridge where footsteps echoed in the cool dusk.",
+          "inline_marks": [
+            {
+              "start": 58,
+              "end": 69,
+              "style": "ITALIC"
+            }
+          ]
+        },
+        {
+          "seq_index": 52,
+          "paragraph_type": "BODY",
+          "text_content": "As soon as she saw me, she hurried forward with anxious eyes. 'Did you deliver it safely? Did the porter swear he would hand it to him directly?' I assured her gently that the letter had reached the right house and that the Lodger was certainly in the city. Hearing that he had received her message—or surely would before nightfall—made her clasp her hands in restless anticipation.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 53,
+          "paragraph_type": "BODY",
+          "text_content": "We sat together on the damp bench while the pale sky glowed above the Admiralty spire. Every time a tall figure turned onto the embankment, Nastenka caught her breath and rose half an inch from the seat, only to sink back with a quiet sigh as a stranger walked past. Watching her heart rise and fall with every distant footstep pierced me more sharply than I had expected.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 54,
+          "paragraph_type": "BODY",
+          "text_content": "'What if he does not come tonight?' she whispered when half an hour had slipped away. 'What if Moscow changed him, and the girl pinned to her Grandmother's skirt seems foolish to him now?' She turned her troubled gaze straight toward me, searching for steady ground in the midst of her doubt.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 55,
+          "paragraph_type": "BODY",
+          "text_content": "Though a selfish voice inside me whispered that his silence might leave room for my own hope, I silenced that thought immediately. I spoke to her calmly, reminding her how honorable the Lodger had proven himself on the night of his departure. A man who refuses to take advantage of a young woman's tears, I argued, is not a man who breaks a solemn promise lightly. Perhaps his business had kept him late, or perhaps he had not returned to his lodgings until evening.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 56,
+          "paragraph_type": "BODY",
+          "text_content": "Nastenka listened intently, drawing comfort from every reasonable excuse I invented on my rival's behalf. Gradually the tension faded from her shoulders. 'How good you are to me,' she said softly, resting her gloved fingers on my arm. 'Wait—why do you look so pale tonight? Are you chilled from walking in yesterday's rain?'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 57,
+          "paragraph_type": "BODY",
+          "text_content": "I forced a cheerful smile and told her that a St. Petersburg dreamer is used to cool breezes off the canal. Yet inside I knew the truth: my promise not to fall in love with Nastenka had already shattered into a thousand quiet pieces. I loved her laughter, her honesty, her loyal heart, and even the very devotion she felt for another man.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 58,
+          "paragraph_type": "BODY",
+          "text_content": "Even so, I resolved that not a single syllable of complaint would cross my lips while her heart still hung in suspense. To offer steady friendship when every pulse begs for more is a quiet sort of courage, and as we sat listening to the water slap softly against the granite pilings, I found strange peace in simply guarding her hope through the cool twilight.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 59,
+          "paragraph_type": "BODY",
+          "text_content": "As the clock approached eleven, a light mist rose off the water and softened the lamps along the opposite bank. Nastenka stood slowly, drawing her dark cloak tight, and admitted that Grandmother would soon wake and wonder why the parlor was silent. We walked side by side toward her narrow gate with far fewer words than on the previous evening, yet every quiet step felt weighted with unspoken understanding.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 60,
+          "paragraph_type": "BODY",
+          "text_content": "Before we parted near her wooden gate, she paused and looked up at me with sudden, penetrating kindness. 'You are far better than him, you know,' she murmured almost to herself. 'Wait—do not answer! Let us wait one more night. Tomorrow is the Fourth Night. If he still does not come tomorrow, I will know the truth at last.'",
+          "inline_marks": [
+            {
+              "start": 243,
+              "end": 255,
+              "style": "ITALIC"
+            }
+          ]
+        },
+        {
+          "seq_index": 61,
+          "paragraph_type": "BODY",
+          "text_content": "I walked home along the shining, rain-washed granite, torn between dread and fragile hope. In my quiet room Matryona had left a single candle burning beside the teapot. I sat motionless until the silver dawn crept over the rooftops, knowing that tomorrow night would decide the fate of both our hearts.",
+          "inline_marks": []
+        }
+      ]
+    },
+    {
+      "episode_id": "wn_ep_5",
+      "episode_index": 5,
+      "section_title": "Fourth Night",
+      "word_count": 901,
+      "est_read_minutes": 5,
+      "recap_bullets": [
+        "When the Lodger still fails to appear on the Fourth Night, Nastenka breaks down and declares that she is done waiting.",
+        "The Dreamer finally confesses his love; touched by his devotion, Nastenka resolves to marry him and begin a new life together.",
+        "Minutes later the Lodger appears by the canal, and Nastenka rushes into his arms, leaving the Dreamer heartbroken on the embankment."
+      ],
+      "paragraphs": [
+        {
+          "seq_index": 62,
+          "paragraph_type": "HEADING",
+          "text_content": "Fourth Night",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 63,
+          "paragraph_type": "BODY",
+          "text_content": "When the Fourth Night arrived, the sky hung clear and luminous over St. Petersburg, yet my heart beat with a heavy, solemn rhythm as I approached the canal. Nastenka was sitting quietly on the bench, her hands folded in her lap and her eyes fixed on the dark water. She did not leap up at the sound of my footsteps as she had before.",
+          "inline_marks": [
+            {
+              "start": 9,
+              "end": 21,
+              "style": "ITALIC"
+            }
+          ]
+        },
+        {
+          "seq_index": 64,
+          "paragraph_type": "BODY",
+          "text_content": "'He has not come,' she said simply when I took my place beside her. 'No letter arrived at the house all day, and Grandmother asked twice why I barely touched my dinner. Wait until the church clock strikes eleven, my friend. If the embankment is still empty then, I will never speak his name again.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 65,
+          "paragraph_type": "BODY",
+          "text_content": "We waited in heavy silence while the luminous twilight deepened into midnight blue. A barge drifted past along the canal, its lantern casting long amber ribbons over the ripples. I tried twice to speak a comforting phrase, yet every word felt brittle in the crisp northern air. At last the distant bronze bell began to strike—slow, unmistakable strokes echoing across the rooftops until eleven had sounded and faded into stillness.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 66,
+          "paragraph_type": "BODY",
+          "text_content": "Nastenka buried her face in her hands and wept quietly, not with the brief fright of our first night, but with the exhausted grief of a long hope finally broken. Watching her shoulders tremble beneath the pale sky broke the final barrier of my restraint. I could keep my secret no longer. Gently I took her cold hands from her face and confessed everything I had hidden behind polite friendship since the moment I first heard her voice.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 67,
+          "paragraph_type": "BODY",
+          "text_content": "'Forgive me, Nastenka,' I whispered, my voice unsteady. 'I broke the only condition you gave me. I love you with my whole soul—yet I ask nothing in return. Even if you love him forever, let me stay beside you as your faithful friend, because these four nights have given me more life than eight lonely years.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 68,
+          "paragraph_type": "BODY",
+          "text_content": "Nastenka lifted her tear-stained face and gazed at me in quiet wonder. Slowly her sobs ceased, and a soft, luminous warmth entered her eyes. 'You truly love me like that?' she whispered. 'Wait—why did I spend an entire year waiting for someone who could leave me weeping on a bridge when the truest heart in the world was sitting right beside me?'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 69,
+          "paragraph_type": "BODY",
+          "text_content": "She rose from the bench, dabbed her eyes dry, and smiled with a sudden, bright courage that made my chest swell with disbelief. 'Listen to me, my dear dreamer! I will not cry another tear for him. Come to our wooden house tomorrow! We shall tell Grandmother together, you shall rent the bright attic room upstairs, and we will read books together in the parlor every winter evening.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 70,
+          "paragraph_type": "BODY",
+          "text_content": "I stared at her in breathless silence, scarcely daring to believe that an ordinary spring night could hold so astonishing a reversal. She laughed softly at my stunned expression, tucked her gloved hand securely beneath my elbow, and asked whether I was already drifting back into one of my solitary St. Petersburg reveries instead of answering a real living woman.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 71,
+          "paragraph_type": "BODY",
+          "text_content": "For ten enchanted minutes we walked arm in arm along the granite embankment, planning our modest future with breathless joy. We laughed about convincing Grandmother to let us visit the opera again, joked about inviting silent Matryona to brew tea for us all, and marveled at how completely two lonely lives had been transformed in four brief spring nights.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 72,
+          "paragraph_type": "BODY",
+          "text_content": "I promised her that I would bring my modest shelves of books into the sunlit attic room, learn every creak of Grandmother's wooden floorboards, and never again retreat into pale nocturnal solitude while a living voice waited downstairs. Nastenka squeezed my arm warmly, declaring that even the stern iron railings along the canal looked friendly tonight under the silver sky.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 73,
+          "paragraph_type": "BODY",
+          "text_content": "Yet even in that bright rush of happiness, Nastenka glanced once toward the far stone bridge with a fleeting tremor in her smile. I pretended not to notice, telling myself that old habits of the heart take more than ten minutes to fade, and that patience and steady tenderness would heal every trace of her past sorrow.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 74,
+          "paragraph_type": "BODY",
+          "text_content": "Then, just as we neared the stone bridge under the bright streetlamps, a tall young man in a dark travel cloak stepped out from the shadow of the archway and stopped dead in his tracks. 'Nastenka!' he called out in a breathless, unmistakable voice.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 75,
+          "paragraph_type": "BODY",
+          "text_content": "Everything inside me froze. Nastenka gripped my sleeve for half a second, let out a sharp cry of astonishment, and stared at the newcomer as though a ghost had stepped out of the mist. It was the Lodger. He hurried toward her with outstretched arms, calling her name again with relief and longing.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 76,
+          "paragraph_type": "BODY",
+          "text_content": "Without a single backward glance at the fragile future we had just built, Nastenka pulled her hand free from mine and ran straight into his embrace. For a long moment she clung to him, laughing and crying all at once. Then, remembering me, she darted back two steps, seized my trembling hands, and pressed a tearful kiss against my cheek before returning to his side.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 77,
+          "paragraph_type": "BODY",
+          "text_content": "'Forgive me—oh, forgive me!' she breathed softly as they turned together toward the bridge. I stood motionless beneath the streetlamp, watching their two silhouettes blend into the pale northern twilight until the embankment was empty once more, and only the cold lapping of the canal answered my silence.",
+          "inline_marks": []
+        }
+      ]
+    },
+    {
+      "episode_id": "wn_ep_6",
+      "episode_index": 6,
+      "section_title": "Morning",
+      "word_count": 927,
+      "est_read_minutes": 5,
+      "recap_bullets": [
+        "On a rainy morning after the Fourth Night, Matryona delivers a tear-stained farewell letter from Nastenka.",
+        "Nastenka begs the Dreamer's forgiveness, explains that she will marry the Lodger next week, and asks him to remain her cherished friend.",
+        "Rather than yielding to bitterness, the Dreamer blesses her happiness and treasures the single moment of true joy those four nights gave him."
+      ],
+      "paragraphs": [
+        {
+          "seq_index": 78,
+          "paragraph_type": "HEADING",
+          "text_content": "Morning",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 79,
+          "paragraph_type": "BODY",
+          "text_content": "My nights ended with the morning. It was a dismal, rainy dawn, with cold drops tapping steadily against my narrow windowpane just as they had on the afternoon I carried Nastenka's letter across the bridges. The room looked smaller and dimmer than ever. Even the faded green wallpaper seemed to have aged overnight, as though fifteen quiet years had passed between midnight and sunrise.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 80,
+          "paragraph_type": "BODY",
+          "text_content": "I sat beside the cold hearth without lighting the stove, listening to the rain rush down the tin gutter outside. Every sound from the street reminded me of the embankment, the wooden bench, and the warm pressure of Nastenka's gloved fingers on my arm. For the first time I understood how swiftly a bright dream can vanish, leaving behind only the echo of footsteps on wet stone.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 81,
+          "paragraph_type": "BODY",
+          "text_content": "Around nine o'clock the latch clicked softly and old Matryona entered, carrying a damp white envelope in her aproned hand. 'A boy brought this to the gate just now, sir,' she said quietly, setting the letter beside my untouched teacup. Without another word she paused by the cupboard, wiped a dusty shelf with her cloth, and stepped back into the kitchen.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 82,
+          "paragraph_type": "BODY",
+          "text_content": "My fingers trembled as I broke the wax seal. Even before reading the opening line, I recognized Nastenka's neat, hurried handwriting, softened in two places by round spots where tears had fallen onto the paper. I carried the sheet closer to the gray window light and read every word slowly.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 83,
+          "paragraph_type": "BLOCKQUOTE",
+          "text_content": "Oh, forgive me, my dearest friend! I beg you on my knees to forgive the wound I caused your generous heart last night. When I spoke to you on the embankment, I truly believed I could begin a new life beside you—yet the moment I saw him standing beneath the archway, my whole heart rushed back to him before I could even think.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 84,
+          "paragraph_type": "BODY",
+          "text_content": "She wrote that the Lodger had been delayed by an unexpected illness in his family after arriving from Moscow, and had hurried to the canal the very evening he recovered strength enough to read her note. She promised that she would never forget our four white nights, the stories I had shared beneath the pale sky, or the gentle courage with which I had protected her on the very first evening.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 85,
+          "paragraph_type": "BODY",
+          "text_content": "'We are to be married next week,' her letter continued. 'Please come to see us whenever your heart allows, for Grandmother already asks who the kind gentleman is who walked me safely to the gate, and he himself longs to thank you like a brother. Never stop loving me as a friend, for I shall cherish your goodness all my days. Yours gratefully, Nastenka.'",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 86,
+          "paragraph_type": "BODY",
+          "text_content": "I lowered the letter onto the table and stared out through the rain-streaked glass at the wet rooftops across the courtyard. A sudden wave of grief rose in my throat, sharp and aching, and for a brief moment I wondered how I could bear another eight solitary years inside this dim St. Petersburg chamber watching Matryona sweep the silent floorboards.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 87,
+          "paragraph_type": "BODY",
+          "text_content": "In my mind's eye I saw the room as it would look fifteen years hence: the same cracked inkstand on the writing desk, the same quiet courtyard wall turning darker under autumn showers, and old Matryona moving even more slowly between the stove and the narrow hallway. A sharp pang tempted me to resent the fleeting fortune that had shown me warmth only to withdraw it before sunrise.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 88,
+          "paragraph_type": "BODY",
+          "text_content": "Then I looked back at the tear-stained sheet resting beside my teacup, and the bitterness melted before it could take root. Why should I darken Nastenka's bright morning with a single shadow of resentment? If she had found the happiness she had waited a whole year to hold, then every quiet sacrifice I had made beside the canal had been worthwhile.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 89,
+          "paragraph_type": "BODY",
+          "text_content": "Even in my narrow room, something had changed forever. I was no longer a man who had never lived outside his own imagination. For four luminous northern nights I had walked beside a real companion, heard an honest human voice answer mine, and felt the full warmth of an unselfish love. No rainy morning could ever steal that memory away.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 90,
+          "paragraph_type": "BODY",
+          "text_content": "I folded Nastenka's letter neatly and placed it inside my favorite volume on the shelf. Outside, a pale break appeared in the gray clouds over the canal, touching the wet slate roofs with a brief gleam of silver light. My eyes grew warm, yet my heart felt strangely peaceful.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 91,
+          "paragraph_type": "BLOCKQUOTE",
+          "text_content": "May your sky be ever clear, Nastenka, and may your gentle smile never fade—for a single whole moment of pure joy is surely enough to illuminate an entire human life.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 92,
+          "paragraph_type": "BODY",
+          "text_content": "When Matryona came back to clear the untouched breakfast tray, she glanced toward the window and murmured that the rain was already lifting over the Fontanka. I thanked her kindly, picked up my coat, and stepped out into the fresh spring air—quiet, changed, and grateful for the brief brightness of those white nights.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 93,
+          "paragraph_type": "BODY",
+          "text_content": "As I crossed the familiar granite bridge toward the sunlit river, the painted houses along the embankment seemed to greet me once again, no longer as substitutes for human companionship, but as quiet witnesses to four unforgettable nights when a solitary St. Petersburg dreamer had stepped into the living world and learned how to love without selfishness.",
+          "inline_marks": []
+        },
+        {
+          "seq_index": 94,
+          "paragraph_type": "BODY",
+          "text_content": "Below the parapet the canal ran bright with reflected clouds, carrying a few fallen birch blossoms steadily toward the open Neva. I paused for one calm breath beside the iron railing where our story had begun, smiled gently at the shining water, and walked onward into the morning.",
+          "inline_marks": []
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "wn_ent_dreamer",
+      "canonical_name": "The Dreamer",
+      "short_role": "Solitary St. Petersburg narrator who lives largely in his imagination.",
+      "first_mention_seq": 1,
+      "aliases": [
+        {
+          "alias_text": "Mr. Dreamer",
+          "tone_note": "Playful, affectionate nickname Nastenka uses to tease him."
+        },
+        {
+          "alias_text": "my dear dreamer",
+          "tone_note": "Warm, trusting address used by Nastenka in moments of tenderness."
+        },
+        {
+          "alias_text": "dreamer",
+          "tone_note": "Self-description the narrator adopts for his nocturnal habits."
+        },
+        {
+          "alias_text": "my poor friend",
+          "tone_note": "Compassionate address Nastenka uses when hearing of his solitude."
+        },
+        {
+          "alias_text": "my dearest friend",
+          "tone_note": "Heartfelt address used in Nastenka's farewell letter."
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "wn_f_d1",
+          "unlocked_at_seq": 1,
+          "fact_text": "Has lived in St. Petersburg for eight quiet years without a single close friend.",
+          "sort_order": 1
+        },
+        {
+          "fact_id": "wn_f_d2",
+          "unlocked_at_seq": 5,
+          "fact_text": "Steps in with his walking stick to protect a weeping young woman on the canal embankment.",
+          "sort_order": 2
+        },
+        {
+          "fact_id": "wn_f_d3",
+          "unlocked_at_seq": 19,
+          "fact_text": "Works quietly as an unnoticed office clerk by day and builds elaborate daydreams by night.",
+          "sort_order": 3
+        },
+        {
+          "fact_id": "wn_f_d4",
+          "unlocked_at_seq": 57,
+          "fact_text": "Realizes he has broken his promise and fallen deeply in love with Nastenka while still defending his rival.",
+          "sort_order": 4
+        },
+        {
+          "fact_id": "wn_f_d5",
+          "unlocked_at_seq": 89,
+          "fact_text": "Refuses bitterness after heartbreak, blessing Nastenka's happiness and treasuring their four nights.",
+          "sort_order": 5
+        }
+      ]
+    },
+    {
+      "entity_id": "wn_ent_nastenka",
+      "canonical_name": "Nastenka",
+      "short_role": "Seventeen-year-old woman waiting by the canal for a promised return.",
+      "first_mention_seq": 8,
+      "aliases": [
+        {
+          "alias_text": "Nastenka",
+          "tone_note": "Affectionate Russian diminutive of Anastasia used throughout the story."
+        },
+        {
+          "alias_text": "Anastasia",
+          "tone_note": "Formal full given name used by Grandmother in solemn moments."
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "wn_f_n1",
+          "unlocked_at_seq": 8,
+          "fact_text": "Lives in a small yellow wooden house near the canal with her elderly Grandmother.",
+          "sort_order": 1
+        },
+        {
+          "fact_id": "wn_f_n2",
+          "unlocked_at_seq": 11,
+          "fact_text": "Agrees to meet the Dreamer at ten o'clock only if he promises not to fall in love with her.",
+          "sort_order": 2
+        },
+        {
+          "fact_id": "wn_f_n3",
+          "unlocked_at_seq": 32,
+          "fact_text": "Grew up tightly sheltered—her blind Grandmother even pinned their dresses together in the parlor.",
+          "sort_order": 3
+        },
+        {
+          "fact_id": "wn_f_n4",
+          "unlocked_at_seq": 45,
+          "fact_text": "Entrusts the Dreamer with a wax-sealed letter to deliver to her former Lodger.",
+          "sort_order": 4
+        },
+        {
+          "fact_id": "wn_f_n5",
+          "unlocked_at_seq": 69,
+          "fact_text": "Briefly resolves to marry the Dreamer on the Fourth Night before the Lodger suddenly appears.",
+          "sort_order": 5
+        },
+        {
+          "fact_id": "wn_f_n6",
+          "unlocked_at_seq": 85,
+          "fact_text": "Writes a tear-stained farewell letter inviting the Dreamer to remain her cherished friend after her wedding.",
+          "sort_order": 6
+        }
+      ]
+    },
+    {
+      "entity_id": "wn_ent_grandmother",
+      "canonical_name": "Grandmother",
+      "short_role": "Nastenka's blind, fiercely protective guardian.",
+      "first_mention_seq": 8,
+      "aliases": [
+        {
+          "alias_text": "Grandmother",
+          "tone_note": "Respectful family title; sharp-eared guardian of the wooden house."
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "wn_f_g1",
+          "unlocked_at_seq": 8,
+          "fact_text": "Calls Nastenka 'Anastasia' whenever she wishes to speak solemnly.",
+          "sort_order": 1
+        },
+        {
+          "fact_id": "wn_f_g2",
+          "unlocked_at_seq": 32,
+          "fact_text": "Completely blind yet acutely observant; pins Nastenka's dress to hers out of protective fear.",
+          "sort_order": 2
+        },
+        {
+          "fact_id": "wn_f_g3",
+          "unlocked_at_seq": 37,
+          "fact_text": "Reluctantly attends The Barber of Seville with Nastenka and the polite young Lodger.",
+          "sort_order": 3
+        },
+        {
+          "fact_id": "wn_f_g4",
+          "unlocked_at_seq": 85,
+          "fact_text": "Asks warmly about the kind gentleman who escorted Nastenka safely to her gate.",
+          "sort_order": 4
+        }
+      ]
+    },
+    {
+      "entity_id": "wn_ent_lodger",
+      "canonical_name": "The Lodger",
+      "short_role": "Former attic tenant who promised to return from Moscow in one year.",
+      "first_mention_seq": 35,
+      "aliases": [
+        {
+          "alias_text": "Lodger",
+          "tone_note": "How Nastenka refers to the quiet young tenant who rented their attic room."
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "wn_f_l1",
+          "unlocked_at_seq": 35,
+          "fact_text": "Quiet, courteous young gentleman who rented the bright attic room in Grandmother's house.",
+          "sort_order": 1
+        },
+        {
+          "fact_id": "wn_f_l2",
+          "unlocked_at_seq": 36,
+          "fact_text": "Lent Nastenka volumes of Walter Scott and Pushkin and treated the household to the opera.",
+          "sort_order": 2
+        },
+        {
+          "fact_id": "wn_f_l3",
+          "unlocked_at_seq": 41,
+          "fact_text": "Left for Moscow on family business after promising to return in one year to marry Nastenka.",
+          "sort_order": 3
+        },
+        {
+          "fact_id": "wn_f_l4",
+          "unlocked_at_seq": 75,
+          "fact_text": "Reappears beneath the stone bridge archway on the Fourth Night and reunites with Nastenka.",
+          "sort_order": 4
+        },
+        {
+          "fact_id": "wn_f_l5",
+          "unlocked_at_seq": 84,
+          "fact_text": "Was delayed by a family illness after arriving from Moscow and plans to marry Nastenka next week.",
+          "sort_order": 5
+        }
+      ]
+    },
+    {
+      "entity_id": "wn_ent_matryona",
+      "canonical_name": "Matryona",
+      "short_role": "The Dreamer's quiet, elderly housekeeper.",
+      "first_mention_seq": 2,
+      "aliases": [
+        {
+          "alias_text": "Matryona",
+          "tone_note": "Given name of the narrator's loyal, almost silent housekeeper."
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "wn_f_m1",
+          "unlocked_at_seq": 2,
+          "fact_text": "Tends the Dreamer's small St. Petersburg apartment and prepares his tea in quiet routine.",
+          "sort_order": 1
+        },
+        {
+          "fact_id": "wn_f_m2",
+          "unlocked_at_seq": 14,
+          "fact_text": "Notices with silent surprise when the usually mute Dreamer returns home flushed after meeting Nastenka.",
+          "sort_order": 2
+        },
+        {
+          "fact_id": "wn_f_m3",
+          "unlocked_at_seq": 81,
+          "fact_text": "Delivers Nastenka's damp, wax-sealed farewell letter on the rainy morning after the Fourth Night.",
+          "sort_order": 3
+        }
+      ]
+    }
+  ]
+}

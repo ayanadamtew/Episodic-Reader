@@ -5,61 +5,112 @@ import com.episodicreader.data.db.AppDatabase
 import com.episodicreader.data.db.entity.BookEntity
 import com.episodicreader.data.db.entity.EntityFactEntity
 import com.episodicreader.data.db.entity.EpisodeEntity
+import com.episodicreader.data.db.entity.ImportStatus
 import com.episodicreader.data.db.entity.NameAliasEntity
 import com.episodicreader.data.db.entity.NameEntity
 import com.episodicreader.data.db.entity.NameMentionEntity
 import com.episodicreader.data.db.entity.ParagraphEntity
+import com.episodicreader.data.db.model.LibraryBookRow
 import kotlinx.coroutines.flow.Flow
 
-data class BookGraph(
+data class AtomicBookIngestionBundle(
     val book: BookEntity,
     val episodes: List<EpisodeEntity>,
     val paragraphs: List<ParagraphEntity>,
-    val nameEntities: List<NameEntity> = emptyList(),
-    val nameMentions: List<NameMentionEntity> = emptyList(),
-    val nameAliases: List<NameAliasEntity> = emptyList(),
-    val entityFacts: List<EntityFactEntity> = emptyList(),
+    val entities: List<NameEntity> = emptyList(),
+    val aliases: List<NameAliasEntity> = emptyList(),
+    val facts: List<EntityFactEntity> = emptyList(),
+    val mentions: List<NameMentionEntity> = emptyList(),
 )
 
-class BookRepository(private val database: AppDatabase) {
-    private val bookDao = database.bookDao()
+class BookRepository(
+    private val db: AppDatabase,
+) {
+    private val bookDao = db.bookDao()
+    private val episodeDao = db.episodeDao()
+    private val paragraphDao = db.paragraphDao()
+    private val lookupDao = db.lookupDao()
 
-    fun observeVisibleBooks(): Flow<List<BookEntity>> = bookDao.observeVisibleBooks()
+    fun observeVisibleLibraryBooks(): Flow<List<LibraryBookRow>> =
+        bookDao.observeVisibleLibraryBooks()
 
-    suspend fun getBook(bookId: String): BookEntity? = bookDao.getById(bookId)
+    fun observeBookById(bookId: String): Flow<BookEntity?> =
+        bookDao.observeBookById(bookId)
 
-    suspend fun insertGraph(graph: BookGraph) {
-        require(graph.episodes.isNotEmpty()) { "A book must contain at least one episode." }
-        require(graph.paragraphs.isNotEmpty()) { "A book must contain at least one paragraph." }
+    fun observeFinishedBooksCount(): Flow<Int> =
+        bookDao.observeFinishedBooksCount()
 
-        database.withTransaction {
-            bookDao.insert(graph.book)
-            database.episodeDao().insertAll(graph.episodes)
-            database.paragraphDao().insertAll(graph.paragraphs)
-            database.lookupDao().apply {
-                if (graph.nameEntities.isNotEmpty()) insertEntities(graph.nameEntities)
-                if (graph.nameMentions.isNotEmpty()) insertMentions(graph.nameMentions)
-                if (graph.nameAliases.isNotEmpty()) insertAliases(graph.nameAliases)
-                if (graph.entityFacts.isNotEmpty()) insertFacts(graph.entityFacts)
+    suspend fun getBookById(bookId: String): BookEntity? =
+        bookDao.getBookById(bookId)
+
+    suspend fun getStarterClassic(): BookEntity? =
+        bookDao.getStarterClassic()
+
+    suspend fun findReadyBookByHash(sha256: String): BookEntity? =
+        bookDao.findReadyBookByHash(sha256)
+
+    suspend fun getProcessingBooks(): List<BookEntity> =
+        bookDao.getProcessingBooks()
+
+    suspend fun insertProcessingPlaceholder(book: BookEntity) {
+        bookDao.insertBook(book.copy(importStatus = ImportStatus.PROCESSING))
+    }
+
+    /**
+     * Atomically persists a parsed or seeded book along with its episodes, paragraphs,
+     * entities, aliases, facts, and mentions, transitioning the book to READY.
+     */
+    suspend fun commitBookBundleAtomically(bundle: AtomicBookIngestionBundle) {
+        val firstEpisodeId = bundle.episodes.minByOrNull { it.episodeIndex }?.episodeId
+        db.withTransaction {
+            bookDao.upsertBook(
+                bundle.book.copy(
+                    importStatus = ImportStatus.READY,
+                    currentEpisodeId = bundle.book.currentEpisodeId ?: firstEpisodeId,
+                ),
+            )
+            if (bundle.episodes.isNotEmpty()) {
+                episodeDao.insertAll(bundle.episodes)
+            }
+            if (bundle.paragraphs.isNotEmpty()) {
+                paragraphDao.insertAll(bundle.paragraphs)
+            }
+            if (bundle.entities.isNotEmpty()) {
+                lookupDao.insertEntities(bundle.entities)
+            }
+            if (bundle.aliases.isNotEmpty()) {
+                lookupDao.insertAliases(bundle.aliases)
+            }
+            if (bundle.facts.isNotEmpty()) {
+                lookupDao.insertFacts(bundle.facts)
+            }
+            if (bundle.mentions.isNotEmpty()) {
+                lookupDao.insertMentions(bundle.mentions)
             }
         }
     }
 
-    suspend fun recordVisibleParagraph(bookId: String, visibleSeq: Int, nowUtcMs: Long) {
-        require(visibleSeq >= 0) { "Paragraph sequence must be non-negative." }
-        check(bookDao.recordVisibleParagraph(bookId, visibleSeq, nowUtcMs) == 1) {
-            "Book not found: $bookId"
+    suspend fun markImportFailed(bookId: String) {
+        bookDao.markImportFailed(bookId)
+    }
+
+    suspend fun setBookHidden(bookId: String, hidden: Boolean) {
+        bookDao.setBookHidden(bookId, if (hidden) 1 else 0)
+    }
+
+    suspend fun markPdfNoticeDismissed(bookId: String) {
+        bookDao.markPdfNoticeDismissed(bookId)
+    }
+
+    suspend fun resetStarterClassic(bookId: String) {
+        db.withTransaction {
+            val firstEp = episodeDao.getFirstEpisode(bookId) ?: return@withTransaction
+            episodeDao.resetEpisodesForBook(bookId)
+            bookDao.resetStarterClassicProgress(bookId, firstEp.episodeId)
         }
     }
 
-    suspend fun setHidden(bookId: String, hidden: Boolean) {
-        check(bookDao.setHidden(bookId, hidden) == 1) { "Book not found: $bookId" }
-    }
-
-    suspend fun deleteBook(bookId: String): String? = database.withTransaction {
-        val privatePath = bookDao.getById(bookId)?.privateFilePath
-        check(bookDao.deleteById(bookId) == 1) { "Book not found: $bookId" }
-        privatePath
+    suspend fun deleteBookById(bookId: String) {
+        bookDao.deleteBookById(bookId)
     }
 }
-

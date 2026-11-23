@@ -10,3 +10,7 @@ captures/
 .tmp/
 *.jks
 *.keystore
+.aistudio/
+.build-outputs/
+.kotlin/
+

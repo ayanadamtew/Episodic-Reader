@@ -1,301 +1,127 @@
 package com.episodicreader.data.db
 
-import android.content.Context
-import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.episodicreader.data.db.entity.BookEntity
-import com.episodicreader.data.db.entity.BookStatus
 import com.episodicreader.data.db.entity.EntityFactEntity
+import com.episodicreader.data.db.entity.EntitySourceKind
 import com.episodicreader.data.db.entity.EpisodeEntity
-import com.episodicreader.data.db.entity.NameAliasEntity
+import com.episodicreader.data.db.entity.ImportStatus
 import com.episodicreader.data.db.entity.NameEntity
 import com.episodicreader.data.db.entity.NameMentionEntity
 import com.episodicreader.data.db.entity.ParagraphEntity
 import com.episodicreader.data.db.entity.ParagraphType
-import com.episodicreader.data.db.entity.ReadingSessionLogEntity
-import com.episodicreader.data.db.entity.SourceFormat
-import com.episodicreader.data.repository.BookGraph
+import com.episodicreader.data.db.entity.SourceType
+import com.episodicreader.data.repository.AtomicBookIngestionBundle
 import com.episodicreader.data.repository.BookRepository
+import com.episodicreader.data.repository.HabitRepository
 import com.episodicreader.data.repository.LookupRepository
-import kotlinx.coroutines.runBlocking
+import com.episodicreader.data.repository.ReaderRepository
+import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class AppDatabaseTest {
-    private lateinit var database: AppDatabase
-    private lateinit var books: BookRepository
-    private lateinit var lookup: LookupRepository
+    private lateinit var db: AppDatabase
+    private lateinit var bookRepository: BookRepository
+    private lateinit var readerRepository: ReaderRepository
+    private lateinit var lookupRepository: LookupRepository
+    private lateinit var habitRepository: HabitRepository
 
     @Before
-    fun createDatabase() {
-        val context = ApplicationProvider.getApplicationContext<Context>()
-        database = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
-            .allowMainThreadQueries()
-            .addCallback(SchemaGuards)
-            .build()
-        books = BookRepository(database)
-        lookup = LookupRepository(database.lookupDao())
+    fun setUp() {
+        db = AppDatabase.createInMemory(ApplicationProvider.getApplicationContext())
+        bookRepository = BookRepository(db)
+        readerRepository = ReaderRepository(db)
+        lookupRepository = LookupRepository(db)
+        habitRepository = HabitRepository(db)
     }
 
     @After
-    fun closeDatabase() {
-        database.close()
+    fun tearDown() {
+        db.close()
     }
 
     @Test
-    fun schemaContainsNineTablesAndRequiredIndices() {
-        val tables = queryNames(
-            "SELECT name FROM sqlite_master WHERE type = 'table'",
+    fun monotonicMaxReadSeqNeverDecreasesOnBackNavigation() = runTest {
+        val book = BookEntity(
+            bookId = "b1",
+            title = "Test Classic",
+            author = "Author",
+            sourceType = SourceType.EPUB,
+            sourceHashSha256 = "hash1",
+            localFilePath = null,
+            importStatus = ImportStatus.READY,
+            importedAtUtc = 1000L,
         )
-        assertTrue(
-            tables.containsAll(
-                setOf(
-                    "books",
-                    "episodes",
-                    "paragraphs",
-                    "name_entities",
-                    "name_mentions",
-                    "name_aliases",
-                    "entity_facts",
-                    "reading_session_logs",
-                    "user_preferences",
-                ),
-            ),
+        val ep1 = EpisodeEntity("e1", "b1", 1, "Chapter 1", 950, 5, 0, 1)
+        val ep2 = EpisodeEntity("e2", "b1", 2, "Chapter 2", 980, 5, 2, 3)
+        val paragraphs = listOf(
+            ParagraphEntity("p0", "b1", "e1", 0, ParagraphType.BODY, "Zero"),
+            ParagraphEntity("p1", "b1", "e1", 1, ParagraphType.BODY, "One"),
+            ParagraphEntity("p2", "b1", "e2", 2, ParagraphType.BODY, "Two"),
+            ParagraphEntity("p3", "b1", "e2", 3, ParagraphType.BODY, "Three"),
         )
+        bookRepository.commitBookBundleAtomically(AtomicBookIngestionBundle(book, listOf(ep1, ep2), paragraphs))
 
-        val indices = queryNames(
-            "SELECT name FROM sqlite_master WHERE type = 'index'",
-        )
-        assertTrue(
-            indices.containsAll(
-                setOf(
-                    "idx_books_hash",
-                    "idx_books_sort",
-                    "idx_ep_book_num",
-                    "idx_para_episode",
-                    "idx_entity_lookup",
-                    "idx_entity_first_seen",
-                    "idx_mentions_entity_seq",
-                    "idx_mentions_book_seq",
-                    "idx_alias_entity",
-                    "idx_facts_unlock",
-                    "idx_logs_local_date",
-                ),
-            ),
-        )
+        readerRepository.updateReadingPositionMonotonic("b1", "e2", 3, 3, 2000L)
+        readerRepository.updateReadingPositionMonotonic("b1", "e1", 0, 0, 3000L)
+
+        val updated = bookRepository.getBookById("b1")!!
+        assertEquals(3, updated.maxReadSeq)
+        assertEquals(0, updated.currentParagraphSeq)
     }
 
     @Test
-    fun deletingBookCascadesContentButPreservesAnonymizedHabitLog() = runBlocking {
-        books.insertGraph(completeGraph())
-        database.habitDao().insert(
-            ReadingSessionLogEntity(
-                logId = "log-1",
-                bookId = BOOK_ID,
-                episodeId = EPISODE_ID,
-                completedLocalDate = "2026-11-20",
-                completedAtUtc = 1_763_616_000_000,
-            ),
+    fun lookupQueriesStrictlyFilterFutureFactsAndMentions() = runTest {
+        val book = BookEntity("b2", "Story", "Writer", SourceType.STARTER_CLASSIC, "h2", null, ImportStatus.READY, importedAtUtc = 1L)
+        val ep1 = EpisodeEntity("e1", "b2", 1, "Night 1", 900, 5, 0, 2)
+        val paragraphs = listOf(
+            ParagraphEntity("p0", "b2", "e1", 0, ParagraphType.BODY, "Nastenka met the narrator."),
+            ParagraphEntity("p1", "b2", "e1", 1, ParagraphType.BODY, "They walked by the canal."),
+            ParagraphEntity("p2", "b2", "e1", 2, ParagraphType.BODY, "Nastenka revealed a future twist."),
+        )
+        val entity = NameEntity("ent1", "b2", "Nastenka", EntitySourceKind.CURATED, "Young woman", 0)
+        val facts = listOf(
+            EntityFactEntity("f1", "b2", "ent1", 0, "Met on the bridge.", 1),
+            EntityFactEntity("f2", "b2", "ent1", 2, "Future spoiler fact.", 2),
+        )
+        val mentions = listOf(
+            NameMentionEntity("m0", "b2", "ent1", 0, "e1", 0, 8, "Nastenka"),
+            NameMentionEntity("m2", "b2", "ent1", 2, "e1", 0, 8, "Nastenka"),
+        )
+        bookRepository.commitBookBundleAtomically(
+            AtomicBookIngestionBundle(book, listOf(ep1), paragraphs, listOf(entity), emptyList(), facts, mentions),
         )
 
-        books.deleteBook(BOOK_ID)
+        val unlockedAtSeq1 = lookupRepository.getUnlockedFacts("b2", "ent1", maxReadSeq = 1)
+        assertEquals(1, unlockedAtSeq1.size)
+        assertEquals("f1", unlockedAtSeq1.first().factId)
 
-        assertEquals(0, database.bookDao().countById(BOOK_ID))
-        assertEquals(0, database.episodeDao().countForBook(BOOK_ID))
-        assertEquals(0, database.paragraphDao().countForBook(BOOK_ID))
-        assertEquals(0, database.lookupDao().countEntitiesForBook(BOOK_ID))
-        assertEquals(0, database.lookupDao().countMentionsForBook(BOOK_ID))
-        assertEquals(0, scalarCount("name_aliases"))
-        assertEquals(0, scalarCount("entity_facts"))
-
-        val remainingLog = database.habitDao().getAll().single()
-        assertNull(remainingLog.bookId)
-        assertEquals(EPISODE_ID, remainingLog.episodeId)
+        val firstPrior = lookupRepository.getFirstPriorMention("b2", "ent1", maxReadSeq = 1, beforeParagraphSeq = 1)
+        assertEquals("m0", firstPrior?.mentionId)
+        val recent = lookupRepository.getRecentPriorMentions("b2", "ent1", maxReadSeq = 1, beforeParagraphSeq = 1, excludeMentionId = "m0")
+        assertEquals(0, recent.size)
     }
 
     @Test
-    fun progressWatermarkOnlyMovesForward() = runBlocking {
-        books.insertGraph(completeGraph())
+    fun deletingBookPreservesReadingSessionLogsWithSetNull() = runTest {
+        val book = BookEntity("b3", "Imported", "Auth", SourceType.EPUB, "h3", null, ImportStatus.READY, importedAtUtc = 1L)
+        val ep1 = EpisodeEntity("e1", "b3", 1, "Part 1", 950, 5, 0, 0)
+        val p0 = ParagraphEntity("p0", "b3", "e1", 0, ParagraphType.BODY, "Text")
+        bookRepository.commitBookBundleAtomically(AtomicBookIngestionBundle(book, listOf(ep1), listOf(p0)))
 
-        books.recordVisibleParagraph(BOOK_ID, visibleSeq = 42, nowUtcMs = 100)
-        books.recordVisibleParagraph(BOOK_ID, visibleSeq = 18, nowUtcMs = 200)
+        readerRepository.completeEpisodeAtomically("b3", "e1", 5000L, "2026-11-20", advanceToNextEpisode = false)
+        bookRepository.deleteBookById("b3")
 
-        val book = requireNotNull(books.getBook(BOOK_ID))
-        assertEquals(18, book.currentParagraphSeq)
-        assertEquals(42, book.maxReadSeq)
-        assertEquals(200, book.lastReadAtUtc)
-    }
-
-    @Test
-    fun lookupNeverReturnsMentionsOrFactsBeyondReadBoundary() = runBlocking {
-        books.insertGraph(completeGraph())
-
-        val entity = lookup.findReadableEntity(BOOK_ID, "ELENA", maxReadSeq = 45)
-        assertEquals(ENTITY_ID, entity?.entityId)
-
-        val card = lookup.getPriorMentions(
-            bookId = BOOK_ID,
-            entityId = ENTITY_ID,
-            currentParagraphSeq = 42,
-            maxReadSeq = 45,
-        )
-        assertEquals(5, card.firstSeen?.seqIndex)
-        assertEquals(listOf(18), card.recentMentions.map { it.seqIndex })
-        assertFalse(card.recentMentions.any { it.seqIndex > 45 })
-
-        val facts = lookup.getUnlockedFacts(ENTITY_ID, maxReadSeq = 28)
-        assertEquals(listOf(10), facts.map { it.unlockedAtSeq })
-    }
-
-    @Test
-    fun sequenceEqualToWatermarkIsReadableButLaterSequenceIsNot() = runBlocking {
-        books.insertGraph(completeGraph())
-
-        val card = lookup.getPriorMentions(
-            bookId = BOOK_ID,
-            entityId = ENTITY_ID,
-            currentParagraphSeq = 43,
-            maxReadSeq = 42,
-        )
-        val visibleSequences = listOfNotNull(card.firstSeen?.seqIndex) +
-            card.recentMentions.map { it.seqIndex }
-
-        assertTrue(42 in visibleSequences)
-        assertTrue(visibleSequences.all { it <= 42 })
-        assertFalse(190 in visibleSequences)
-    }
-
-    @Test
-    fun invalidGraphRollsBackEveryInsertedRow() = runBlocking {
-        val invalidMention = completeGraph().nameMentions.first().copy(
-            charStart = 8,
-            charEnd = 8,
-        )
-        val invalidGraph = completeGraph().copy(nameMentions = listOf(invalidMention))
-
-        expectFailure { books.insertGraph(invalidGraph) }
-
-        assertEquals(0, database.bookDao().countById(BOOK_ID))
-        assertEquals(0, database.episodeDao().countForBook(BOOK_ID))
-        assertEquals(0, database.paragraphDao().countForBook(BOOK_ID))
-        assertEquals(0, database.lookupDao().countEntitiesForBook(BOOK_ID))
-    }
-
-    private fun completeGraph(): BookGraph = BookGraph(
-        book = BookEntity(
-            bookId = BOOK_ID,
-            title = "White Nights",
-            author = "Fyodor Dostoevsky",
-            sourceFormat = SourceFormat.BUNDLED,
-            fileHash = "sha256:test",
-            status = BookStatus.READY,
-            hasCuratedPack = true,
-            importedAtUtc = 1,
-        ),
-        episodes = listOf(
-            EpisodeEntity(
-                episodeId = EPISODE_ID,
-                bookId = BOOK_ID,
-                episodeNumber = 1,
-                sectionHeading = "First Night",
-                seqStart = 0,
-                seqEnd = 190,
-                wordCount = 1_200,
-                estMinutes = 8,
-            ),
-        ),
-        paragraphs = listOf(5, 18, 42, 190).map { sequence ->
-            ParagraphEntity(
-                bookId = BOOK_ID,
-                seqIndex = sequence,
-                episodeId = EPISODE_ID,
-                paragraphType = ParagraphType.BODY,
-                plainText = "Elena appears in paragraph $sequence.",
-            )
-        },
-        nameEntities = listOf(
-            NameEntity(
-                entityId = ENTITY_ID,
-                bookId = BOOK_ID,
-                canonicalName = "Elena",
-                normalizedKey = "elena",
-                firstSeenSeq = 5,
-                mentionCount = 4,
-                shortRole = "A familiar name",
-            ),
-        ),
-        nameMentions = listOf(5, 18, 42, 190).map { sequence ->
-            NameMentionEntity(
-                mentionId = "mention-$sequence",
-                bookId = BOOK_ID,
-                entityId = ENTITY_ID,
-                seqIndex = sequence,
-                charStart = 0,
-                charEnd = 5,
-            )
-        },
-        nameAliases = listOf(
-            NameAliasEntity(
-                aliasId = "alias-1",
-                entityId = ENTITY_ID,
-                aliasText = "Lena",
-            ),
-        ),
-        entityFacts = listOf(
-            EntityFactEntity(
-                factId = "fact-10",
-                entityId = ENTITY_ID,
-                unlockedAtSeq = 10,
-                factText = "An early fact.",
-            ),
-            EntityFactEntity(
-                factId = "fact-95",
-                entityId = ENTITY_ID,
-                unlockedAtSeq = 95,
-                factText = "A later fact.",
-            ),
-        ),
-    )
-
-    private fun queryNames(sql: String): Set<String> {
-        val cursor = database.openHelper.readableDatabase.query(sql)
-        return cursor.use {
-            buildSet {
-                while (it.moveToNext()) add(it.getString(0))
-            }
-        }
-    }
-
-    private fun scalarCount(tableName: String): Int {
-        require(tableName in setOf("name_aliases", "entity_facts"))
-        val cursor = database.openHelper.readableDatabase.query("SELECT COUNT(*) FROM $tableName")
-        return cursor.use {
-            it.moveToFirst()
-            it.getInt(0)
-        }
-    }
-
-    private suspend fun expectFailure(block: suspend () -> Unit) {
-        try {
-            block()
-            fail("Expected database operation to fail")
-        } catch (_: Exception) {
-            // Expected: a schema guard aborts the transaction.
-        }
-    }
-
-    private companion object {
-        const val BOOK_ID = "book-1"
-        const val EPISODE_ID = "episode-1"
-        const val ENTITY_ID = "entity-elena"
+        val logs = habitRepository.getAllLogs()
+        assertEquals(1, logs.size)
+        assertNull(logs.first().bookId)
+        assertEquals("Imported", logs.first().bookTitleSnapshot)
     }
 }

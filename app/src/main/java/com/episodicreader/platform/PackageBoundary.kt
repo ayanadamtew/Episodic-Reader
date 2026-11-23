@@ -1,5 +1,6 @@
 package com.episodicreader.platform
 
-/** Android OS adapters such as SAF, assets, and workers live in this package. */
-internal object PlatformPackageBoundary
-
+/**
+ * Architectural boundary marker for Android platform integrations (SAF document picker, private storage, clock).
+ */
+object PlatformPackageBoundary

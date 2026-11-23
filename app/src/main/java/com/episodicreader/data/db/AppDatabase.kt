@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.episodicreader.data.db.dao.BookDao
 import com.episodicreader.data.db.dao.EpisodeDao
 import com.episodicreader.data.db.dao.HabitDao
@@ -26,9 +27,9 @@ import com.episodicreader.data.db.entity.UserPreferencesEntity
         EpisodeEntity::class,
         ParagraphEntity::class,
         NameEntity::class,
-        NameMentionEntity::class,
         NameAliasEntity::class,
         EntityFactEntity::class,
+        NameMentionEntity::class,
         ReadingSessionLogEntity::class,
         UserPreferencesEntity::class,
     ],
@@ -44,17 +45,34 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun preferencesDao(): PreferencesDao
 
     companion object {
-        private const val DATABASE_NAME = "episodic_reader.db"
+        const val DATABASE_NAME = "episodic_reader_v1.db"
 
-        fun build(context: Context): AppDatabase =
-            Room.databaseBuilder(
-                context.applicationContext,
-                AppDatabase::class.java,
-                DATABASE_NAME,
-            )
-                .setJournalMode(JournalMode.WRITE_AHEAD_LOGGING)
-                .addCallback(SchemaGuards)
-                .build()
+        fun create(context: Context): AppDatabase = Room.databaseBuilder(
+            context.applicationContext,
+            AppDatabase::class.java,
+            DATABASE_NAME,
+        )
+            .addCallback(schemaGuardCallback())
+            .build()
+
+        fun createInMemory(context: Context): AppDatabase = Room.inMemoryDatabaseBuilder(
+            context.applicationContext,
+            AppDatabase::class.java,
+        )
+            .allowMainThreadQueries()
+            .addCallback(schemaGuardCallback())
+            .build()
+
+        private fun schemaGuardCallback(): Callback = object : Callback() {
+            override fun onCreate(db: SupportSQLiteDatabase) {
+                super.onCreate(db)
+                SchemaGuards.apply(db)
+            }
+
+            override fun onOpen(db: SupportSQLiteDatabase) {
+                super.onOpen(db)
+                db.execSQL("PRAGMA foreign_keys = ON")
+            }
+        }
     }
 }
-
